@@ -10,7 +10,7 @@ class FontViewer
     if fs.isFileSync(filePath)
       new FontViewer(filePath)
     else
-      console.warn "Could not deserialize image editor for path '#{filePath}' because that file no longer exists"
+      console.warn "Could not deserialize font viewer for path '#{filePath}' because that file no longer exists"
 
   constructor: (@filePath) ->
 
