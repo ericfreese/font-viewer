@@ -1,0 +1,13 @@
+'.platform-darwin .font-viewer':
+  'cmd-+': 'font-viewer:zoom-in'
+  'cmd-=': 'font-viewer:zoom-in'
+  'cmd--': 'font-viewer:zoom-out'
+  'cmd-_': 'font-viewer:zoom-out'
+  'cmd-0': 'font-viewer:reset-zoom'
+
+'.platform-win32 .font-viewer':
+  'ctrl-+': 'font-viewer:zoom-in'
+  'ctrl-=': 'font-viewer:zoom-in'
+  'ctrl--': 'font-viewer:zoom-out'
+  'ctrl-_': 'font-viewer:zoom-out'
+  'ctrl-0': 'font-viewer:reset-zoom'

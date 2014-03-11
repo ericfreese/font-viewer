@@ -1,0 +1,15 @@
+{
+  "name": "font-viewer",
+  "main": "./lib/main",
+  "version": "0.0.0",
+  "description": "Preview font files in an editor in Atom.",
+  "repository": "https://github.com/ericfreese/font-viewer",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "fs-plus": "2.x",
+    "underscore-plus": "1.x"
+  }
+}
