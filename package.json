@@ -6,10 +6,11 @@
   "repository": "https://github.com/ericfreese/font-viewer",
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": "*"
   },
   "dependencies": {
     "fs-plus": "2.x",
-    "underscore-plus": "1.x"
+    "underscore-plus": "1.x",
+    "freetype2": "0.x"
   }
 }

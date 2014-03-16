@@ -1,5 +1,6 @@
 path = require 'path'
 fs = require 'fs-plus'
+freetype = require 'freetype2'
 
 # Editor model for a font file
 module.exports =
@@ -37,6 +38,10 @@ class FontViewer
   # Returns a {String} path.
   getPath: ->
     @filePath
+
+  getFontData: (callback) ->
+    fs.readFile @getPath(), (err, buffer) ->
+      callback(freetype.parse(buffer))
 
   # Compares two {FontViewer}s to determine equality.
   #

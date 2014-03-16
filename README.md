@@ -1,11 +1,12 @@
 # Font Viewer
 
-Preview font files in an editor in Atom. Support zooming via cmd-+, cmd--, and cmd-0. Based on the [image-view](https://github.com/atom/image-view) package.
 
-Currently supports the following file extensions:
+Preview font files in an editor in Atom. Support zooming via `⌘+`, `⌘-`, and `⌘0`.
 
-- `.otf`
-- `.ttf`
-- `.woff`
+Shows a preview of all mapped characters. Currently supports `.otf`, `.ttf`, and `.woff`
 
-![Font Viewer](http://i.imgur.com/H9m8ZfP.png)
+![Font Viewer](http://i.imgur.com/WF2iej3.png)
+
+Based on [image-view](https://github.com/atom/image-view). Uses the [freetype2](https://www.npmjs.org/package/freetype2) module for font file parsing.
+
+https://atom.io/packages/font-viewer
