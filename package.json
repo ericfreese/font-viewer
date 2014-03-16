@@ -9,8 +9,8 @@
     "atom": "*"
   },
   "dependencies": {
-    "fs-plus": "2.x",
-    "underscore-plus": "1.x",
-    "freetype2": "0.x"
+    "fs-plus": "~2",
+    "underscore-plus": "~1",
+    "freetype2": "~0.1.2"
   }
 }
