@@ -1,5 +1,7 @@
-{ScrollView} = require 'atom'
 _ = require 'underscore-plus'
+path = require 'path'
+{$, ScrollView} = require 'atom-space-pen-views'
+{Emitter, CompositeDisposable} = require 'atom'
 
 # View that renders a {FontViewer}.
 module.exports =
@@ -10,21 +12,28 @@ class FontViewerView extends ScrollView
       @div class: 'font-container', outlet: 'container', =>
         @div class: 'font-preview', outlet: 'preview'
 
-  initialize: (fontViewer) ->
+  initialize: (@fontViewer) ->
     super
+    @emitter = new Emitter
+
+  attached: ->
+    @disposables = new CompositeDisposable
+
+    @disposables.add atom.commands.add @element,
+      'font-viewer:zoom-in': => @zoomIn()
+      'font-viewer:zoom-out': => @zoomOut()
+      'font-viewer:reset-zoom': => @resetZoom()
 
     preview = @preview
-
-    fontViewer.getFontData (fontface) ->
-      _.each fontface.available_characters, (c)->
+    @fontViewer.getAvailableCharacters (availableCharacters) ->
+      _.each availableCharacters, (c)->
         preview.append "<div class=\"font-glyph\">&#x#{c.toString(16)};<div class=\"font-glyph-id\">U+#{c.toString(16)}</div></div>"
 
-    @style.append "@font-face { font-family: \"#{fontViewer.getUri()}\"; src: url('#{fontViewer.getUri()}'); }"
-    @container.css 'font-family': "\"#{fontViewer.getUri()}\""
+    @style.append "@font-face { font-family: \"#{@fontViewer.getUri()}\"; src: url('#{@fontViewer.getUri()}'); }"
+    @container.css 'font-family': "\"#{@fontViewer.getUri()}\""
 
-    @command 'font-viewer:zoom-in', => @zoomIn()
-    @command 'font-viewer:zoom-out', => @zoomOut()
-    @command 'font-viewer:reset-zoom', => @resetZoom()
+  detached: ->
+    @disposables.dispose()
 
   # Zooms the font preview out by 10%.
   zoomOut: ->

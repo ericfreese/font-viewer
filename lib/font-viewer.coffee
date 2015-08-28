@@ -1,6 +1,7 @@
 path = require 'path'
 fs = require 'fs-plus'
-freetype = require 'freetype2'
+{File, CompositeDisposable} = require 'atom'
+ft = require 'freetype2'
 
 # Editor model for a font file
 module.exports =
@@ -13,35 +14,52 @@ class FontViewer
     else
       console.warn "Could not deserialize font viewer for path '#{filePath}' because that file no longer exists"
 
-  constructor: (@filePath) ->
+  constructor: (filePath) ->
+    @file = new File(filePath)
+    @subscriptions = new CompositeDisposable()
 
   serialize: ->
-    {@filePath, deserializer: @constructor.name}
+    {filePath: @getPath(), deserializer: @constructor.name}
 
   getViewClass: ->
     require './font-viewer-view'
 
+  destroy: ->
+    @subscriptions.dispose()
+
   # Retrieves the filename of the open file.
+  #
+  # This is `'untitled'` if the file is new and not saved to the disk.
   #
   # Returns a {String}.
   getTitle: ->
-    path.basename(@filePath)
+    if filePath = @getPath()
+      path.basename(filePath)
+    else
+      'untitled'
 
   # Retrieves the URI of the font file.
   #
   # Returns a {String}.
-  getUri: ->
-    @filePath
+  getUri: -> @getPath()
 
   # Retrieves the absolute path to the font file.
   #
   # Returns a {String} path.
-  getPath: ->
-    @filePath
+  getPath: -> @file.getPath()
 
-  getFontData: (callback) ->
+  getAvailableCharacters: (callback) ->
     fs.readFile @getPath(), (err, buffer) ->
-      callback(freetype.parse(buffer))
+      chars = []
+      gindex = {}
+      face = ft.New_Memory_Face(buffer, 0);
+      charcode = ft.Get_First_Char(face, gindex)
+
+      while gindex.gindex != 0
+        chars.push(charcode);
+        charcode = ft.Get_Next_Char(face, charcode, gindex);
+
+      callback(chars)
 
   # Compares two {FontViewer}s to determine equality.
   #

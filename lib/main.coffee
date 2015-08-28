@@ -4,14 +4,14 @@ FontViewer = require './font-viewer'
 
 module.exports =
   activate: ->
-    atom.workspace.registerOpener(openUri)
+    @openerDisposable = atom.workspace.addOpener(openURI)
 
   deactivate: ->
-    atom.workspace.unregisterOpener(openUri)
+    @openerDisposable.dispose()
 
 # Files with these extensions will be opened as fonts
 fontExtensions = ['.otf', '.ttf', '.woff']
-openUri = (uriToOpen) ->
+openURI = (uriToOpen) ->
   uriExtension = path.extname(uriToOpen).toLowerCase()
   if _.include(fontExtensions, uriExtension)
     new FontViewer(uriToOpen)
