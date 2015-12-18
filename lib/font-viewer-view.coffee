@@ -9,9 +9,8 @@ class FontViewerView extends ScrollView
   @content: ->
     @div class: 'font-viewer', tabindex: -1, =>
       @style outlet: 'style'
-      @div class: 'font-container', outlet: 'container', =>
-        @div class: 'font-preview', outlet: 'preview'
-
+      @div class: 'font-container', outlet: 'container'
+preview
   initialize: (@fontViewer) ->
     super
     @emitter = new Emitter
@@ -24,10 +23,10 @@ class FontViewerView extends ScrollView
       'font-viewer:zoom-out': => @zoomOut()
       'font-viewer:reset-zoom': => @resetZoom()
 
-    preview = @preview
+    container = @container
     @fontViewer.getAvailableCharacters (availableCharacters) ->
       _.each availableCharacters, (c)->
-        preview.append "<div class=\"font-glyph\">&#x#{c.toString(16)};<div class=\"font-glyph-id\">U+#{c.toString(16)}</div></div>"
+        container.append "<div class=\"font-glyph\">&#x#{c.toString(16)};<div class=\"font-glyph-id\">U+#{c.toString(16)}</div></div>"
 
     @style.append "@font-face { font-family: \"#{@fontViewer.getUri()}\"; src: url('#{@fontViewer.getUri()}'); }"
     @container.css 'font-family': "\"#{@fontViewer.getUri()}\""
