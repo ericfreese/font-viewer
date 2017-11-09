@@ -52,7 +52,9 @@ class FontViewer
     fs.readFile @getPath(), (err, buffer) ->
       chars = []
       gindex = {}
-      face = ft.New_Memory_Face(buffer, 0);
+      face = {}
+      ft.New_Memory_Face(buffer, 0, face);
+      face = face.face
       charcode = ft.Get_First_Char(face, gindex)
 
       while gindex.gindex != 0
