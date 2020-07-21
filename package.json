@@ -9,9 +9,12 @@
     "atom": "*"
   },
   "dependencies": {
-    "atom-space-pen-views": "~2.0.0",
-    "fs-plus": "~2.0.0",
-    "underscore-plus": "~1.0.0",
-    "freetype2": "~0.3.0"
-  }
+    "atom-space-pen-views-plus": "^3.0.4",
+    "fs-plus": "~3.1.1",
+    "underscore-plus": "^1.7",
+    "freetype2": "github:romgrk/node-freetype2#fix-for-node-12"
+  },
+  "activationHooks": [
+    "core:loaded-shell-environment"
+  ]
 }

@@ -1,6 +1,6 @@
 _ = require 'underscore-plus'
 path = require 'path'
-{$, ScrollView} = require 'atom-space-pen-views'
+{$, ScrollView} = require 'atom-space-pen-views-plus'
 {Emitter, CompositeDisposable} = require 'atom'
 
 # View that renders a {FontViewer}.
