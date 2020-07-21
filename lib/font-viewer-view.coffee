@@ -10,7 +10,7 @@ class FontViewerView extends ScrollView
     @div class: 'font-viewer', tabindex: -1, =>
       @style outlet: 'style'
       @div class: 'font-container', outlet: 'container'
-preview
+
   initialize: (@fontViewer) ->
     super
     @emitter = new Emitter
