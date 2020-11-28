@@ -8,6 +8,9 @@
   "engines": {
     "atom": "*"
   },
+  "scripts": {
+    "format": "prettier --write ."
+  },
   "dependencies": {
     "atom-space-pen-views-plus": "^3.0.4",
     "fs-plus": "~3.1.1",
@@ -16,5 +19,8 @@
   },
   "activationHooks": [
     "core:loaded-shell-environment"
-  ]
+  ],
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
 }
