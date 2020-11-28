@@ -1,7 +1,13 @@
 @import "ui-variables";
 
+// css containment to improve performance
+@contain_all: layout size paint style;
+@contain_but_size: layout paint style;
+
 .font-viewer {
+  contain: @contain_all;
   .font-container {
+    contain: @contain_all;
     padding: 0.2em;
     height: 100%;
     overflow: auto;
@@ -9,6 +15,7 @@
     color: @text-color-highlight;
 
     .font-glyph {
+      contain: @contain_but_size;
       position: relative;
       display: inline-block;
       vertical-align: middle;
@@ -19,6 +26,7 @@
       white-space: pre;
 
       .font-glyph-id {
+        contain: @contain_but_size;
         display: none;
         position: absolute;
         right: 0;
@@ -34,6 +42,7 @@
         border-color: @text-color-highlight;
 
         .font-glyph-id {
+          contain: @contain_but_size;
           display: block;
         }
       }
