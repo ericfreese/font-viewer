@@ -1,7 +1,6 @@
 # Font Viewer
 
-
-Preview font files in an editor in Atom. Support zooming via `⌘+`, `⌘-`, and `⌘0`.
+Preview font files in an editor in Atom. Support zooming via `CTRL+` `CTRL-`, and `CTRL0` (`⌘` on MacOS)
 
 Shows a preview of all mapped characters. Currently supports `.otf`, `.ttf`, and `.woff`
 
