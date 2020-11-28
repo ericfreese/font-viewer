@@ -15,7 +15,7 @@
     "atom-space-pen-views-plus": "^3.0.4",
     "fs-plus": "~3.1.1",
     "underscore-plus": "^1.7",
-    "freetype2": "1.0.1"
+    "freetype2": "1.0.3"
   },
   "activationHooks": [
     "core:loaded-shell-environment"
