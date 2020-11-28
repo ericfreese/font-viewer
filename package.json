@@ -1,7 +1,7 @@
 {
   "name": "font-viewer",
   "main": "./lib/main",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Preview font files in an editor in Atom.",
   "repository": "https://github.com/ericfreese/font-viewer",
   "license": "MIT",
