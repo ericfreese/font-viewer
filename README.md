@@ -4,7 +4,7 @@ Preview font files in an editor in Atom. Support zooming via `CTRL+` `CTRL-`, an
 
 Shows a preview of all mapped characters. Currently supports `.otf`, `.ttf`, and `.woff`
 
-![Font Viewer](http://i.imgur.com/WF2iej3.png)
+![Font Viewer](https://github.com/ericfreese/font-viewer/blob/master/screenshot.webp?raw=true)
 
 Based on [image-view](https://github.com/atom/image-view). Uses the [freetype2](https://www.npmjs.org/package/freetype2) module for font file parsing.
 
